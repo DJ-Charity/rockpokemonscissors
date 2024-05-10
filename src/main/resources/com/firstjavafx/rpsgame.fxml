@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.collections.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
+<!--Style up game, hover functions needed for puttons and i still need popup function -->
+<VBox alignment="TOP_CENTER" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.firstjavafx.GameController" style="-fx-background-color: linear-gradient(to bottom, #8B0000, #FF7F7F);">
+   <children>
+      <Label fx:id="opponentLabel" alignment="TOP_CENTER" style="-fx-font-size: 40pt; -fx-font-style: italic; -fx-text-fill: white; -fx-font-family: Lucida Console; -fx-padding: 30 0 0 0;"/>
+      <Label text="Select a Pokemon below to defeat it." alignment="TOP_CENTER" style="-fx-font-size: 35pt; -fx-font-style: italic; -fx-text-fill: white; -fx-font-family: Lucida Console;"/>
+      <HBox spacing="200.0" alignment="CENTER" style="-fx-padding: 30 0 0 0;">
+         <children>
+            <VBox alignment="CENTER" prefWidth = "400.0" style="-fx-padding: 20 0 0 0; -fx-background-color: white; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0.0 , 0 , 1 );">
+               <children>
+                  <Button fx:id= "optionOne" prefWidth = "300.0" prefHeight="100" onAction="#checkOneChoice"/>
+                  <Label fx:id="oneType" style="-fx-font-size: 15pt; -fx-text-fill: black; -fx-font-family: Lucida Console;"/>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefWidth = "400.0" style="-fx-padding: 20 0 0 0; -fx-background-color: white; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 10, 0.0 , 0 , 1 );">
+               <children>
+                  <Button fx:id= "optionTwo" prefWidth = "300.0" prefHeight="100.0" onAction="#checkTwoChoice"/>
+                  <Label fx:id="twoType" style="-fx-font-size: 15pt; -fx-text-fill: black; -fx-font-family: Lucida Console;"/>
+               </children>
+            </VBox>
+            
+         </children>
+      </HBox>
+      
+      <HBox spacing="100.0" alignment="CENTER" style="-fx-padding: 40 0 0 0;">
+         <children>
+            <Button text = "Go Back" prefWidth = "200" prefHeight="50" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-family: Lucida Console; -fx-font-size: 15pt;" onAction="#goBack"/>
+            <Button text = "Type Chart" prefWidth = "200" prefHeight="50" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-family: Lucida Console; -fx-font-size: 15pt;" onAction="#giveHelp"/>
+         </children>
+      </HBox>
+
+      <Label fx:id= "resultLabel" style="-fx-font-size: 25pt; -fx-font-style: italic; -fx-text-fill: white; -fx-font-family: Lucida Console;"/>
+
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="TOP_CENTER" spacing="50.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.firstjavafx.LoginController" style = "-fx-background-color: gray; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );" stylesheets="@fancyeffects.css">
+   <children>
+
+      <Label text="Welcome to the Pokemon Management System!" style="-fx-padding:30 0 0 0; -fx-font-size: 30pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Verdana;"></Label>
+      <Line startX="0.0" startY="56.0" endX="900.0" endY="56.0" strokeWidth="5.0" stroke = "BLACK"/>
+      <!-- Prompts the user with choice of login-->
+      
+      <Label text="Are you logging in as a Professor or Trainer?" style="-fx-font-size: 25pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Verdana;"/>
+
+      <!-- Lists what each user can do-->
+      <HBox alignment="CENTER" spacing="90.0" xmlns="http://javafx.com/javafx/8.0.171">
+         <children>
+            <VBox alignment="TOP_LEFT" spacing="50.0" xmlns="http://javafx.com/javafx/8.0.171">
+               <children>
+                  <Button fx:id="professorButton" text="Professor" onAction="#switchToProfessor"/>
+                  <Label text="&#x2022; Can Edit the Pokemon Database" style ="-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Verdana;"/>
+                  <Label text="&#x2022; Can Create New Trainers" style ="-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Verdana;"/>
+
+               </children>
+            </VBox>
+            <Line startX="0.0" startY="0.0" endX="0.0" endY="300.0" strokeWidth="5.0" stroke = "BLACK"/>
+            <VBox alignment="TOP_LEFT" spacing="50.0" xmlns="http://javafx.com/javafx/8.0.171">
+               <children>
+                  <Button fx:id="trainerButton" text="Trainer" onAction="#switchToTrainer"/>
+                  <Label text="&#x2022; Play the Game:" style ="-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Verdana;"/>
+                  <Label text="   Rock-Pokemon-Scissors" style ="-fx-padding:-50 0 0 0; -fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Verdana;"/>
+                  <Label text="&#x2022; View and Change User Info" style ="-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Verdana;"/>
+               </children>
+            </VBox>
+            
+
+         </children>
+      </HBox>
+      
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

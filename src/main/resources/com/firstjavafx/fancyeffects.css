@@ -1,0 +1,77 @@
+#professorButton, #trainerButton {
+    -fx-background-color: white;
+    -fx-transition: background-color 0.5s ease;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); 
+    -fx-padding: 15 30 15 30; 
+    -fx-font-size: 22px; 
+    -fx-text-fill: black; 
+    -fx-background-radius: 8,7,6; 
+    -fx-background-insets: 0,1,2; 
+    -fx-font-family: Verdana; 
+    -fx-font-weight: bold;
+
+}
+#professorButton:hover, #trainerButton:hover{     
+    -fx-background-color:#f15151;
+    -fx-text-fill: white;
+}
+
+#login, #goback {
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 ); 
+    -fx-background-color: white; 
+    -fx-font-size: 20px; 
+    -fx-text-fill: black; 
+    -fx-background-radius: 8,7,6; 
+    -fx-background-insets: 0,1,2; 
+    -fx-font-family: Verdana; 
+    -fx-font-weight: bold;
+}
+#login:hover, #goback:hover{     
+    -fx-background-color:#f15151;
+    -fx-text-fill: white;
+}
+
+#profMenuButtons {
+    -fx-text-fill: #707070;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-background-color: linear-gradient(to right, #0dbe0d, #ffffff);
+    
+}
+
+#profMenuButtons:hover {
+    -fx-background-color:#00ea75;
+    -fx-text-fill: white;
+}
+
+#trainerMenuButtons {
+    -fx-text-fill: #707070;
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-background-color: linear-gradient(to right, #4772f4, #ffffff);
+    
+}
+
+#trainerMenuButtons:hover {
+    -fx-background-color:#61d8ff;
+    -fx-text-fill: white;
+}
+
+#optionOne, #optionTwo {
+    -fx-background-color: linear-gradient(to bottom, #FF7F7F, #ffcdcd); 
+    fx-text-fill: black; 
+    -fx-font-family: Verdana; 
+    -fx-font-size: 20pt; 
+    -fx-font-weight: bold;
+    -fx-background-radius: 15px;
+}
+
+#optionOne:hover, #optionTwo:hover {
+    -fx-background-color: #ffcdcd; 
+    fx-text-fill: black; 
+    -fx-font-family: Verdana; 
+    -fx-font-size: 20pt; 
+    -fx-background-radius: 15px;
+}

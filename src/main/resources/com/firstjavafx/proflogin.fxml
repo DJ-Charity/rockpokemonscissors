@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="TOP_LEFT" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.firstjavafx.LoginController" style = "-fx-background-color: gray;">
+   <children>
+      <Label text="Professor Sign In" style="-fx-font-size: 30pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Courier;"/>
+      
+      <HBox spacing="20.0" alignment="TOP_LEFT">
+         <children>
+            <Label text="Username:" style="-fx-font-size: 22pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Courier;"/>
+            <TextField fx:id="usernameField" style ="-fx-font-family: Courier; -fx-font-size: 15pt;"></TextField>
+         </children>
+      </HBox>
+
+      <HBox spacing="22.0" alignment="TOP_LEFT">
+         <children>
+            <Label text="Password:" style="-fx-font-size: 22pt; -fx-font-weight: bold; -fx-text-fill: white; -fx-font-family: Courier;"/>
+            <PasswordField fx:id="passwordField" style ="-fx-font-size: 15pt;"></PasswordField>
+         </children>
+      </HBox>
+
+      <HBox spacing="30.0" alignment="TOP_LEFT" style = "-fx-padding:30 0 0 0;">
+         <children>
+            <Button fx:id="login" text="LOGIN" onAction="#checkProfLogin" mnemonicParsing="false"/>
+            <Button fx:id="goback" text="GO BACK" onAction="#goBack"/>
+         </children>
+      </HBox>
+      <Label fx:id="incorrectLogin" text="Username or password is incorrect, please try again." visible = "false" style="-fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: red; -fx-font-family: DejaVu Sans Mono;"/>
+      
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
