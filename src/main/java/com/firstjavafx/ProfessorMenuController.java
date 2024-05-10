@@ -38,7 +38,7 @@ public class ProfessorMenuController {
         primaryStage.show();
     }
 
-    public void loadDeleteFXML(String fname, boolean isTrainer) throws IOException {
+    public void loadDeleteFXML(String fname) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fname));
         Parent pane = (Parent)loader.load();
         Scene scene = new Scene(pane, 1200, 800);
@@ -57,7 +57,7 @@ public class ProfessorMenuController {
 
     @FXML
     public void deleteUser() throws IOException{
-        loadDeleteFXML("deleteuser.fxml", false);
+        loadDeleteFXML("deleteuser.fxml");
     }
     
     @FXML

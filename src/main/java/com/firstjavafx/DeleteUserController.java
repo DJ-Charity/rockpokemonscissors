@@ -21,7 +21,7 @@ public class DeleteUserController {
     private Stage primaryStage;
 
     @FXML
-    private TextField namField;
+    private TextField nameField;
 
     @FXML
     private ChoiceBox userTypes;
@@ -40,19 +40,42 @@ public class DeleteUserController {
     @FXML
     public void decideUser() {
         resLabel.setVisible(false);
-        if((userTypes.getUserData().toString()).equals("Professor")) {
+        if(((String)userTypes.getValue()) == null || nameField.getText() == null) {
+            return;
+        }
+        if(((String)userTypes.getValue()).equals("Professor")) {
             //Delete professor
             String dbURL = "jdbc:postgresql:rps?user=postgres&password=postpsswd";
             try {
                 Connection conn = DriverManager.getConnection(dbURL);
                 PreparedStatement pstmt = conn.prepareStatement("DELETE FROM PROFESSORS WHERE USERNAME = ?");
-                pstmt.setString(1, namField.getText());
+                pstmt.setString(1, nameField.getText());
                 int rs = pstmt.executeUpdate();
                 if(rs == 0) {
                     resLabel.setText("That Professor does not exist");
                     resLabel.setVisible(true);
                 } else {
-                    resLabel.setText(namField.getText() + " was deleted.");
+                    resLabel.setText(nameField.getText() + " was deleted.");
+                    resLabel.setVisible(true);
+                }
+                
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else if(((String)userTypes.getValue()).equals("Trainer")) {
+            //Delete Trainer
+            String dbURL = "jdbc:postgresql:rps?user=postgres&password=postpsswd";
+            try {
+                Connection conn = DriverManager.getConnection(dbURL);
+                PreparedStatement pstmt = conn.prepareStatement("DELETE FROM TRAINERS WHERE USERNAME = ?");
+                pstmt.setString(1, nameField.getText());
+                int rs = pstmt.executeUpdate();
+                if(rs == 0) {
+                    resLabel.setText("That Trainer does not exist");
+                    resLabel.setVisible(true);
+                } else {
+                    resLabel.setText(nameField.getText() + " was deleted.");
                     resLabel.setVisible(true);
                 }
                 
@@ -61,18 +84,18 @@ public class DeleteUserController {
                 e.printStackTrace();
             }
         } else {
-            //Delete Trainer
+            //Delete Pokemon
             String dbURL = "jdbc:postgresql:rps?user=postgres&password=postpsswd";
             try {
                 Connection conn = DriverManager.getConnection(dbURL);
-                PreparedStatement pstmt = conn.prepareStatement("DELETE FROM TRAINERS WHERE USERNAME = ?");
-                pstmt.setString(1, namField.getText());
+                PreparedStatement pstmt = conn.prepareStatement("DELETE FROM POKEMON WHERE POKEMON_NAME = ?");
+                pstmt.setString(1, nameField.getText());
                 int rs = pstmt.executeUpdate();
                 if(rs == 0) {
-                    resLabel.setText("That Trainer does not exist");
+                    resLabel.setText("That Pokemon does not exist");
                     resLabel.setVisible(true);
                 } else {
-                    resLabel.setText(namField.getText() + " was deleted.");
+                    resLabel.setText(nameField.getText() + " was deleted.");
                     resLabel.setVisible(true);
                 }
                 
@@ -80,12 +103,14 @@ public class DeleteUserController {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
         }
 
     }
 
     @FXML
     public void goBack() throws IOException{ 
+        //go back to menu
         FXMLLoader loader = new FXMLLoader(getClass().getResource("profmenu.fxml"));
         Parent pane = (Parent)loader.load();
         Scene scene = new Scene(pane, 1200, 800);

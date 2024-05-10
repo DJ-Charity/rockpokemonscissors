@@ -75,6 +75,9 @@ public class CreateUserController {
 
     @FXML
     public void decideUser() throws IOException{
+        if(((String)userTypes.getValue()) == null || usernameField.getText() == null) {
+            return;
+        }
         if(((String)userTypes.getValue()).equals("Professor")) {
             checkNewProf();
         } else {
