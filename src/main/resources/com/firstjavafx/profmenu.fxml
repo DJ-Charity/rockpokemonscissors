@@ -16,8 +16,8 @@
             
             <VBox alignment="TOP_LEFT" spacing="30.0" style="-fx-padding: 40 0 30 20; ">
                <children>
-                  <Button fx:id= "profMenuButtons" maxWidth = "700" prefHeight="40" text="Create New Trainer" onAction="#newStudent"/>
-                  <Button fx:id= "profMenuButtons" maxWidth = "700" prefHeight="40" text="Create New Professor" onAction="#newProfessor"/>
+                  <Button fx:id= "profMenuButtons" maxWidth = "700" prefHeight="40" text="Create New User" onAction="#newUser"/>
+                  <Button fx:id= "profMenuButtons" maxWidth = "700" prefHeight="40" text="Delete User" onAction="#deleteUser"/>
                   <Button fx:id= "profMenuButtons" maxWidth = "700" prefHeight="40" text="Create New Pokemon" onAction="#newPokemon"/>
                   <Button fx:id= "profMenuButtons" maxWidth = "700" prefHeight="40" text="Change Username" onAction="#changeUsername"/>
                   <Button fx:id= "profMenuButtons" maxWidth = "700" prefHeight="40" text="Change Password" onAction="#changePassword"/>

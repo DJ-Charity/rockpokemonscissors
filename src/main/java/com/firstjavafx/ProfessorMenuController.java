@@ -4,17 +4,11 @@ import java.io.IOException;
 
 import javafx.stage.Stage;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
-import java.util.*;
-import java.sql.*;
 
 public class ProfessorMenuController {
     @FXML
@@ -44,16 +38,26 @@ public class ProfessorMenuController {
         primaryStage.show();
     }
 
-    //need to create options to delete profs, trains, and poke
-    //Also able to view the poke database(trainers should also do this)
-    @FXML
-    public void newStudent() throws IOException{
-        loadCreateFXML("newtrain.fxml", true);
+    public void loadDeleteFXML(String fname, boolean isTrainer) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fname));
+        Parent pane = (Parent)loader.load();
+        Scene scene = new Scene(pane, 1200, 800);
+        scene.getStylesheets().add(App.class.getResource("fancyeffects.css").toExternalForm());
+        primaryStage.setScene(scene);
+        //Switch control to delete new users and pokemon
+        DeleteUserController controller = loader.getController();
+        controller.setData(currentProfessor, primaryStage);
+        primaryStage.show();
     }
-    
+
     @FXML
-    public void newProfessor() throws IOException{
-        loadCreateFXML("newprof.fxml", false);
+    public void newUser() throws IOException{
+        loadCreateFXML("newuser.fxml", false);
+    }
+
+    @FXML
+    public void deleteUser() throws IOException{
+        loadDeleteFXML("deleteuser.fxml", false);
     }
     
     @FXML

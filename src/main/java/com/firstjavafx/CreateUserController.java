@@ -7,9 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.function.UnaryOperator;
-
 import javafx.application.Platform;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,7 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
+
 
 public class CreateUserController {
     private Professor currentProfessor;
@@ -40,7 +38,13 @@ public class CreateUserController {
     private TextField regionField;
 
     @FXML
+    private ChoiceBox userTypes;
+
+    @FXML
     private ChoiceBox types;
+
+    @FXML
+    private Label resLabel;
 
     @FXML
     private Label userCreated;
@@ -70,13 +74,21 @@ public class CreateUserController {
     }
 
     @FXML
+    public void decideUser() throws IOException{
+        if(((String)userTypes.getValue()).equals("Professor")) {
+            checkNewProf();
+        } else {
+            checkNewTrainer();
+        }
+    }
+
+    @FXML
     public void checkNewProf() throws IOException{
-        badCredentials.setVisible(false);
-        userFound.setVisible(false); 
-        userCreated.setVisible(false);
+        resLabel.setVisible(false);
 
         if((usernameField.getText().length() > 16 || usernameField.getText().isEmpty()) || (passwordField.getText().length() > 16 || passwordField.getText().isEmpty())) {
-            badCredentials.setVisible(true);
+            resLabel.setVisible(true);
+            resLabel.setText("All fields must be 16 characters or less and not empty.");
             return;
         } 
         //pull from database to make sure there are no professors in there with that name
@@ -93,10 +105,12 @@ public class CreateUserController {
                 insertStmt.setString(1, usernameField.getText());
                 insertStmt.setString(2, passwordField.getText());
                 insertStmt.executeUpdate();
-        
-                userCreated.setVisible(true);
+
+                resLabel.setText("Successfully created new Professor!");
+                resLabel.setVisible(true);
             } else {
-                userFound.setVisible(true);
+                resLabel.setText("This Professor already exists, please try again.");
+                resLabel.setVisible(true);
             }
             conn.close();
         } catch (SQLException e) {
@@ -107,12 +121,11 @@ public class CreateUserController {
     @FXML
     public void checkNewTrainer() throws IOException{
         
-        badCredentials.setVisible(false);
-        userFound.setVisible(false); 
-        userCreated.setVisible(false);
+        resLabel.setVisible(false);
 
         if((usernameField.getText().length() > 16 || usernameField.getText().isEmpty()) || (passwordField.getText().length() > 16 || passwordField.getText().isEmpty())) {
-            badCredentials.setVisible(true);
+            resLabel.setVisible(true);
+            resLabel.setText("All fields must be 16 characters or less and not empty.");
             return;
         } 
         
@@ -131,9 +144,11 @@ public class CreateUserController {
                 insertStmt.setInt(3, Integer.parseInt(levelField.getText())); 
                 insertStmt.executeUpdate();
         
-                userCreated.setVisible(true);
+                resLabel.setText("Successfully created new Trainer!");
+                resLabel.setVisible(true);
             } else {
-                userFound.setVisible(true);
+                resLabel.setText("This Professor already exists, please try again.");
+                resLabel.setVisible(true);
             }
             conn.close();
         } catch (SQLException e) {
